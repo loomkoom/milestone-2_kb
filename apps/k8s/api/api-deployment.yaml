@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi
+  namespace: milestone2-kb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: fastapi
+          imagePullPolicy: IfNotPresent
+          image: fastapi-image
+          ports:
+            - containerPort: 8080
+              name: fastapi

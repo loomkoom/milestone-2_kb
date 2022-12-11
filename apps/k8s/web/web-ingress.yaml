@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: apache-ingress
+  namespace: milestone2-kb
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: "m2.test"
+      http:
+        paths:
+        - pathType: Prefix
+          path: "/web"
+          backend:
+            service:
+              name: apache-service
+              port:
+                name: apache
