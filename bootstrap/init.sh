@@ -29,5 +29,6 @@ kubectl apply -f manifests/project.yaml
 echo "Creating the app of apps..."
 kubectl apply -f manifests/application.yaml
 
+# add ingress
 echo "Creating the app of apps..."
 kubectl apply -f argocd-ingress.yaml

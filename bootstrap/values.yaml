@@ -1,9 +1,7 @@
 server:
-  # Patching the TLS because we want our SSL termination to happen on Ingress Controller level
   extraArgs:
   - --insecure
 
-  # Enable the health assessment of applications
   config:
     resource.customizations.health.argoproj.io_Application: |
       hs = {}
