@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Create repository and API Token variables
-read -p "Enter the full repository URL (with .git at the end): " repository
-read -p "Enter the Git API token with api scope permissions: " git_api_token
-read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+repository="$1"
+git_api_token="$2"
+
 
 # Set the working directory to always be argocd/bootstrap/
 cd "$(dirname "${BASH_SOURCE[0]}")"
@@ -28,3 +28,6 @@ kubectl apply -f manifests/project.yaml
 # Create the app of apps
 echo "Creating the app of apps..."
 kubectl apply -f manifests/application.yaml
+
+echo "Creating the app of apps..."
+kubectl apply -f argocd-ingress.yaml
