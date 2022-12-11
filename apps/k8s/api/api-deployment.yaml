@@ -21,3 +21,7 @@ spec:
           ports:
             - containerPort: 8080
               name: fastapi
+      initContainers:
+      - name: init-postgres-service
+        image: busybox:1.28
+        command: ['sh', '-c', "until nslookup postgres-service.milestone2-kb.svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
